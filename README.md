@@ -10,6 +10,9 @@ Incluye:
 - Exportación directa de resultados a Excel.
 - Fácil integración mediante un fragmento HTML.
 
+## Pruébalo aquí
+<a href="https://ayoselomba.es/produccionCientificaORCIDxml.html" target="_blank" rel="noopener">Ver visor de producción científica ORCID (DEMO)</a>
+
 ## 🚀 Integración rápida
 
 1. Añade el siguiente `div` donde quieras que aparezca el widget:
