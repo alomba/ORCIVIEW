@@ -4,9 +4,77 @@ Este widget permite incrustar de forma sencilla y atractiva la **producción cie
 ![Logo](img/Logo.png)
 
 Incluye:
-- Visualización de publicaciones con iconos temáticos.
-- Exportación a Excel.
-- Filtro por ID de ORCID desde un campo editable. (en proceso)
+- Visualización en tiempo real de obras académicas desde ORCID.
+- Clasificación automática por tipo de obra con iconos representativos.
+- Filtro por ID ORCID personalizable.
+- Exportación directa de resultados a Excel.
+- Fácil integración mediante un fragmento HTML.
+
+## 🚀 Integración rápida
+
+1. Añade el siguiente `div` donde quieras que aparezca el widget:
+
+```html
+<section id="research">
+  <div class="container">
+    <div class="col-lg-12 text-center">
+      <h2 class="section-heading text-uppercase">Investigación</h2>
+    </div>
+    <div class="form-row justify-content-center mb-3">
+      <div class="col-auto">
+        <input type="text" id="orcid-input" class="form-control" value="0000-0002-2678-6158" placeholder="Introduce tu ORCID">
+      </div>
+      <div class="col-auto">
+        <button id="btnResearchOrcid" class="btn btn-primary" type="button">Buscar producción científica</button>
+      </div>
+      <div class="col-auto">
+        <button id="btnExportExcel" class="btn btn-success" type="button" disabled>Exportar a Excel</button>
+      </div>
+    </div>
+    <ul id="research-works-list" class="list-unstyled mb-0"></ul>
+  </div>
+</section>
+```
+
+2. Carga las dependencias necesarias justo antes del cierre de `</body>`:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="js/orcid-widgetxml.js"></script>
+```
+
+## 📁 Estructura del repositorio
+
+```
+/
+├── index.html
+├── js/
+│   └── orcid-widgetxml.js
+├── css/
+│   └── (opcional: estilos personalizados)
+└── README.md
+```
+
+## 📦 Dependencias
+
+- Font Awesome 5 (para iconos)
+- Bootstrap 4 o posterior (opcional, para estilo)
+- [SheetJS](https://github.com/SheetJS/sheetjs) (`xlsx.full.min.js`) para exportar Excel
+
+## 🛠️ Personalización
+
+- Puedes cambiar el diseño visual modificando los estilos del HTML y CSS.
+- Se puede ocultar el input ORCID si deseas que cargue un único perfil por defecto.
+- El código está modularizado para permitir reutilización.
+
+## 📃 Licencia
+
+MIT License
+
+---
+
+Este widget ha sido creado para facilitar la divulgación del trabajo investigador de forma visual, accesible y exportable.
+
 
 ## ✨ Ejemplo de uso
 
@@ -27,17 +95,6 @@ Incluye:
 [![En producción]()
 
 > Próximamente un vídeo donde te mostraré paso a paso cómo integrar y personalizar este widget para tu web.
-
----
-
-## 📦 Archivos
-
-| Archivo                 | Descripción                                      |
-|------------------------|--------------------------------------------------|
-| `orcid-widgetxml.js`      | Script principal: consulta y renderizado.        |
-| `orcid-export.js`      | Exportación a Excel (usa [SheetJS](https://sheetjs.com/)). |
-| `index.html`           | Ejemplo base con Bootstrap y Font Awesome.       |
-| `img/`              | Carpeta para capturas y materiales gráficos.     |
 
 ---
 
