@@ -1,0 +1,78 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investigación - ORCID Widget</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://ayoselomba.es/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <!-- Font Awesome Free 5 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Custom template CSS -->
+  <link href="https://ayoselomba.es/css/agency.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+  <!-- Sección Investigación -->
+  <section class="bg-light page-section" id="research">
+    <div class="container">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase">INVESTIGACIÓN</h2>
+      </div>
+      <p>Listado de producción científica …</p> 
+
+      <!-- Input + botón para ORCID -->
+      <div class="form-row justify-content-center mb-3">
+        <div class="col-auto">
+          <input type="text"
+                 id="orcid-input"
+                 class="form-control"
+                 value="0000-0002-2678-6158"
+                 placeholder="Introduce tu ORCID">
+        </div>
+        <div class="col-auto">
+          <button id="btnResearchOrcid"
+                  class="btn btn-primary"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#researchOrcidCollapse"
+                  aria-expanded="false"
+                  aria-controls="researchOrcidCollapse">
+            Buscar producción científica en ORCID
+          </button>
+        </div>
+      </div>
+      <p class="mt-3">Resultados obtenidos: <strong id="research-works-counter">0</strong></p>
+
+      <!-- Collapse con la lista -->
+      <div class="collapse" id="researchOrcidCollapse">
+        <div class="card card-body">
+          <ul id="research-works-list" class="list-unstyled mb-0">
+            <li class="text-center text-muted">Cargando obras…</li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center mt-3">       
+       <button id="btnExportExcel" class="btn btn-success mt-3" disabled>Exportar a Excel</button> 
+      </div>
+    </div>
+  </section>
+
+  <!-- jQuery y Bootstrap JS -->
+  <script src="https://ayoselomba.es/vendor/jquery/jquery.min.js"></script>
+  <script src="https://ayoselomba.es/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ORCID Widget JS externo -->
+  <script src="http://ayoselomba.es/js/orcid-widgetxml.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <!-- Inicializar el widget después de cargar orcid-widget.js -->
+  <script>
+    ORCIDWidget.init({
+      orcidId:         document.getElementById('orcid-input').value.trim(),
+      buttonSelector:  '#btnResearchOrcid',
+      collapseSelector:'#researchOrcidCollapse',
+      listSelector:    '#research-works-list'
+    });
+  </script>
+</body>
+</html>
