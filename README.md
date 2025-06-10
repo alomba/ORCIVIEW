@@ -40,7 +40,7 @@ Incluye:
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="js/orcid-widgetxml.js"></script>
+<script src="http://ayoselomba.es/js/orcid-widgetxml.js"></script>
 ```
 
 ## 📁 Estructura del repositorio
