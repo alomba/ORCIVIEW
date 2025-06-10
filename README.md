@@ -69,7 +69,9 @@ Incluye:
 
 ## 📃 Licencia
 
-MIT License
+Este proyecto está licenciado bajo los términos de la Licencia MIT.
+
+> © 2025 Ayose Lomba Pérez. Puedes usar, modificar y distribuir este software libremente, siempre que mantengas este aviso de autoría y la licencia original.
 
 ---
 
