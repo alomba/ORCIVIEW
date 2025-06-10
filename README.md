@@ -17,7 +17,7 @@ Incluye:
 ![Captura del widget mostrando resultados](img/captura02.png)
 
 
-![Exportación a Excel funcionando](images/export-excel.png)
+![Exportación a Excel funcionando](img/exportacionExcel.png)
 > Resultado de la exportación en Microsoft Excel con enlaces interactivos.
 
 ---
