@@ -1,7 +1,7 @@
 # ORCIVIEW (ORCID Widget Embebible)
 Este widget permite incrustar de forma sencilla y atractiva la **producción científica** de cualquier investigador con perfil ORCID, directamente en páginas web personales, sitios institucionales o blogs académicos.
 
-![Logo](img/Logo.png)
+![Logo](img/LogoCorto.png)
 
 Incluye:
 - Visualización en tiempo real de obras académicas desde ORCID.
