@@ -13,6 +13,8 @@ Incluye:
 ## Pruébalo aquí
 <a href="https://ayoselomba.es/produccionCientificaORCIDxml.html" target="_blank" rel="noopener">Ver visor de producción científica ORCID (DEMO)</a>
 
+<a href="http://ayoselomba.es/produccionCientificaORCIDFiltro.html" target="_blank" rel="noopener">Ver visor de producción científica ORCID con FILTRO (DEMO)</a>
+
 ## 🚀 Integración rápida
 
 1. Añade el siguiente `div` donde quieras que aparezca el widget:
