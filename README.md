@@ -1,120 +1,303 @@
-# ORCIVIEW (ORCID Widget Embebible)
-Este widget permite incrustar de forma sencilla y atractiva la **producción científica** de cualquier investigador con perfil ORCID, directamente en páginas web personales, sitios institucionales o blogs académicos.
+# ORCIVIEW Plus v2.0
 
-![Logo](img/LogoCorto.png)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![ORCID](https://img.shields.io/badge/ORCID-A6CE39?logo=orcid&logoColor=white)](https://orcid.org)
 
-Incluye:
-- Visualización en tiempo real de obras académicas desde ORCID.
-- Clasificación automática por tipo de obra con iconos representativos.
-- Filtro por ID ORCID personalizable.
-- Exportación directa de resultados a Excel.
-- Fácil integración mediante un fragmento HTML.
+**Visualizador completo de perfil ORCID** con filtros por tipo de publicación, diseño moderno y accesible.
 
-## Pruébalo aquí
-<a href="https://ayoselomba.es/produccionCientificaORCIDxml.html" target="_blank" rel="noopener">Ver visor de producción científica ORCID (DEMO)</a>
+🔗 **Demo en vivo:** [https://ayoselomba.es/orcid](https://ayoselomba.es/orcid)
 
-<a href="http://ayoselomba.es/produccionCientificaORCIDFiltro.html" target="_blank" rel="noopener">Ver visor de producción científica ORCID con FILTRO (DEMO)</a>
+---
 
-## 🚀 Integración rápida
+## ✨ Novedades en v2.0
 
-1. Añade el siguiente `div` donde quieras que aparezca el widget:
+- 🔍 **Filtros por tipo de publicación** en cada sección
+- ⚙️ **ORCID por defecto configurable** - carga automáticamente tu perfil
+- 📊 **Contador de resultados** al filtrar
+- 🚀 **Mejor rendimiento** con carga paralela de datos
+- 🏆 **Soporte completo para actividades profesionales** (distinciones, posiciones invitadas, membresías, cualificaciones, servicios)
+- 📱 **Diseño responsive mejorado**
+- ♿ **Accesibilidad WCAG 2.1** (skip links, ARIA, reduced motion)
+- 📥 **Exportación Excel mejorada** con todas las secciones
+- 🌐 **Soporte multiidioma** (español e inglés)
 
-```html
-<section id="research">
-  <div class="container">
-    <div class="col-lg-12 text-center">
-      <h2 class="section-heading text-uppercase">Investigación</h2>
-    </div>
-    <div class="form-row justify-content-center mb-3">
-      <div class="col-auto">
-        <input type="text" id="orcid-input" class="form-control" value="0000-0002-2678-6158" placeholder="Introduce tu ORCID">
-      </div>
-      <div class="col-auto">
-        <button id="btnResearchOrcid" class="btn btn-primary" type="button">Buscar producción científica</button>
-      </div>
-      <div class="col-auto">
-        <button id="btnExportExcel" class="btn btn-success" type="button" disabled>Exportar a Excel</button>
-      </div>
-    </div>
-    <ul id="research-works-list" class="list-unstyled mb-0"></ul>
-  </div>
-</section>
-```
+---
 
-2. Carga las dependencias necesarias justo antes del cierre de `</body>`:
+## 📦 Instalación
+
+### Opción 1: Usar desde CDN (recomendado)
+
+Simplemente incluye los archivos CSS y JS en tu HTML:
 
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="http://ayoselomba.es/js/orcid-widgetxml.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- ORCIVIEW Plus CSS -->
+    <link rel="stylesheet" href="https://ayoselomba.es/orcid/css/orciview-plus.css">
+</head>
+<body>
+    <!-- Tu contenido aquí -->
+    <!-- Copia la estructura HTML del index.html -->
+    
+    <!-- SheetJS (para exportar Excel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <!-- ORCIVIEW Plus JS -->
+    <script src="https://ayoselomba.es/orcid/js/orciview-plus.js"></script>
+</body>
+</html>
 ```
 
-## 📁 Estructura del repositorio
+### Opción 2: Descargar y hospedar
+
+1. Descarga o clona este repositorio
+2. Sube los archivos a tu servidor
+3. Actualiza las rutas en el HTML:
+
+```html
+<link rel="stylesheet" href="css/orciview-plus.css">
+<script src="js/orciview-plus.js"></script>
+```
+
+---
+
+## ⚙️ Configuración
+
+Edita la configuración al inicio del archivo `js/orciview-plus.js`:
+
+```javascript
+const CONFIG = {
+    // Tu ORCID por defecto (se carga automáticamente)
+    defaultOrcid: '0000-0002-2678-6158',
+    
+    // Pestaña activa por defecto
+    defaultTab: 'works',  // 'works', 'education', 'employment', 'funding', 'activities'
+    
+    // Habilitar exportación a Excel
+    enableExport: true,
+    
+    // Mostrar filtros por tipo
+    enableFilters: true,
+    
+    // Idioma: 'es' (español) o 'en' (inglés)
+    language: 'es'
+};
+```
+
+---
+
+## 🔗 Cargar un ORCID específico via URL
+
+Puedes cargar cualquier perfil ORCID añadiendo el parámetro `orcid` a la URL:
 
 ```
-/
-├── index.html
-├── js/
-│   └── orcid-widgetxml.js
+https://ayoselomba.es/orcid/?orcid=0000-0001-2345-6789
+```
+
+---
+
+## 🛠️ API JavaScript
+
+ORCIVIEW Plus expone una API global para uso programático:
+
+```javascript
+// Cambiar el ORCID y recargar
+ORCIVIEW.setOrcid('0000-0001-2345-6789');
+
+// Refrescar los datos actuales
+ORCIVIEW.refresh();
+
+// Acceder a la configuración
+console.log(ORCIVIEW.config);
+```
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+ORCIVIEW/
+├── index.html              # Página principal
 ├── css/
-│   └── (opcional: estilos personalizados)
-└── README.md
+│   └── orciview-plus.css   # Estilos completos
+├── js/
+│   └── orciview-plus.js    # Lógica principal
+├── img/
+│   └── screenshot.png      # Captura de pantalla
+├── README.md               # Esta documentación
+├── CHANGELOG.md            # Historial de cambios
+└── LICENSE                 # Licencia MIT
 ```
 
-## 📦 Dependencias
+---
 
-- Font Awesome 5 (para iconos)
-- Bootstrap 4 o posterior (opcional, para estilo)
-- [SheetJS](https://github.com/SheetJS/sheetjs) (`xlsx.full.min.js`) para exportar Excel
+## 🎨 Personalización de estilos
 
-## 🛠️ Personalización
+Los estilos usan variables CSS que puedes sobrescribir fácilmente:
 
-- Puedes cambiar el diseño visual modificando los estilos del HTML y CSS.
-- Se puede ocultar el input ORCID si deseas que cargue un único perfil por defecto.
-- El código está modularizado para permitir reutilización.
+```css
+:root {
+    /* Colores principales */
+    --orcid-green: #A6CE39;
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #252542;
+    --text-primary: #f0f0f5;
+    --text-secondary: #a0a0b0;
+    
+    /* Colores por sección */
+    --color-works: #A6CE39;
+    --color-education: #4ECDC4;
+    --color-employment: #FF6B6B;
+    --color-funding: #F39C12;
+    --color-activities: #9B59B6;
+}
+```
 
-## 📃 Licencia
+### Tema claro
 
-Este proyecto está licenciado bajo los términos de la Licencia MIT.
+Para usar un tema claro, sobrescribe las variables:
 
-> © 2025 Ayose Lomba Pérez. Puedes usar, modificar y distribuir este software libremente, siempre que mantengas este aviso de autoría y la licencia original.
+```css
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #666666;
+    --border: rgba(0, 0, 0, 0.1);
+}
+```
 
 ---
 
-Este widget ha sido creado para facilitar la divulgación del trabajo investigador de forma visual, accesible y exportable.
+## 📊 Secciones disponibles
 
-
-## ✨ Ejemplo de uso
-
-![Captura del widget mostrando resultados](img/captura01.png)
-
-> Vista del widget integrado en una sección de investigación personal.
-
-![Captura del widget mostrando resultados](img/captura02.png)
-
-
-![Exportación a Excel funcionando](img/exportacionExcel.png)
-> Resultado de la exportación en Microsoft Excel con enlaces interactivos.
+| Sección | Descripción | Filtros |
+|---------|-------------|---------|
+| **Publicaciones** | Artículos, libros, conferencias, datasets, software... | ✅ Por tipo |
+| **Educación** | Titulaciones académicas | ❌ |
+| **Empleo** | Posiciones laborales | ❌ |
+| **Financiación** | Proyectos, subvenciones, contratos | ✅ Por tipo |
+| **Actividades** | Distinciones, membresías, servicios... | ✅ Por tipo |
 
 ---
 
-## 🎥 Video explicativo
+## 🔌 Endpoints ORCID utilizados
 
-[![En producción]()
+El widget utiliza la **API Pública de ORCID v3.0** (no requiere autenticación):
 
-> Próximamente un vídeo donde te mostraré paso a paso cómo integrar y personalizar este widget para tu web.
+- `/record` - Información del perfil
+- `/works` - Publicaciones
+- `/educations` - Educación
+- `/employments` - Empleo
+- `/fundings` - Financiación
+- `/distinctions` - Distinciones
+- `/invited-positions` - Posiciones invitadas
+- `/memberships` - Membresías
+- `/qualifications` - Cualificaciones
+- `/services` - Servicios
 
 ---
 
-## 🚀 Cómo integrarlo en tu web
+## 📥 Exportación a Excel
 
-1. **Copia el contenido del HTML** en tu página.
-2. **Asegúrate de tener cargado**:
-   - [jQuery](https://jquery.com/)
-   - [Bootstrap](https://getbootstrap.com/)
-   - [Font Awesome 5+](https://fontawesome.com/)
-   - [SheetJS](https://cdnjs.com/libraries/xlsx) para exportar a Excel.
+El botón "Exportar Excel" genera un archivo `.xlsx` con las siguientes hojas:
 
-3. **Añade el script:**
-   ```html   
-   <script src="https://ayoselomba.es/js/orcid-widgetxml.js"></script>
+1. **Publicaciones** - Título, tipo, revista, año, DOI, URL
+2. **Educación** - Titulación, institución, departamento, fechas
+3. **Empleo** - Puesto, organización, departamento, ubicación, fechas
+4. **Financiación** - Título, organización, tipo, fechas, URL
+5. **Actividades** - Tipo, rol, organización, departamento, fechas
 
+Requiere la librería [SheetJS](https://sheetjs.com/).
+
+---
+
+## ♿ Accesibilidad
+
+ORCIVIEW Plus sigue las pautas WCAG 2.1 nivel AA:
+
+- ✅ Skip link para saltar al contenido principal
+- ✅ Roles ARIA en pestañas y paneles
+- ✅ Estados `aria-selected` y `aria-controls`
+- ✅ Focus visible en todos los elementos interactivos
+- ✅ Soporte para `prefers-reduced-motion`
+- ✅ Textos alternativos y etiquetas descriptivas
+- ✅ Contraste de colores adecuado
+
+---
+
+## 🌐 Compatibilidad de navegadores
+
+| Navegador | Versión mínima |
+|-----------|----------------|
+| Chrome | 80+ |
+| Firefox | 75+ |
+| Safari | 13+ |
+| Edge | 80+ |
+| Opera | 67+ |
+
+---
+
+## 📝 Changelog
+
+### v2.0.0 (2025)
+- ✨ Filtros por tipo de publicación en cada sección
+- ✨ ORCID por defecto configurable
+- ✨ Contador de resultados filtrados
+- ✨ Soporte completo para actividades profesionales
+- ✨ API JavaScript pública (`ORCIVIEW.setOrcid()`, etc.)
+- ⚡ Mejor rendimiento con carga paralela
+- ♿ Mejoras de accesibilidad
+- 🎨 Rediseño visual con variables CSS
+
+### v1.0.0 (2024)
+- 🎉 Versión inicial
+- Visualización de publicaciones
+- Exportación básica a Excel
+
+---
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas:
+
+1. Fork este repositorio
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -am 'Añade nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la **Licencia MIT**. Ver el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+## 👤 Autor
+
+**Ayose Lomba Pérez**
+
+- Web: [ayoselomba.es](https://ayoselomba.es)
+- ORCID: [0000-0002-2678-6158](https://orcid.org/0000-0002-2678-6158)
+- GitHub: [@alomba](https://github.com/alomba)
+- LinkedIn: [ayoselomba](https://linkedin.com/in/ayoselomba)
+
+---
+
+## 🙏 Agradecimientos
+
+- [ORCID](https://orcid.org) por su excelente API pública
+- [Font Awesome](https://fontawesome.com) por los iconos
+- [SheetJS](https://sheetjs.com) por la exportación a Excel
+- [Google Fonts](https://fonts.google.com) por las tipografías Fraunces y Source Sans 3

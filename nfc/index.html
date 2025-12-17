@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ayose Lomba Pérez – Contacto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tarjeta de contacto digital de Ayose Lomba Pérez - Universidad del Atlántico Medio">
+
+  <!-- Fuente e iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome para iconos -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #032f73, #00aebc);
+      --card-bg: rgba(10, 10, 25, 0.9);
+      --accent: #00aebc;
+      --accent-orcid: #A6CE39;
+      --accent-soft: rgba(255, 179, 71, 0.1);
+      --text-main: #f7f7ff;
+      --text-muted: #a7b0c4;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --shadow-soft: 0 24px 40px rgba(0, 0, 0, 0.45);
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border-subtle);
+      padding: 24px 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.15), transparent 55%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-nfc {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .badge-nfc i {
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    .header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ffb347, #ffcc33);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #1b1730;
+      box-shadow: 0 16px 28px rgba(0,0,0,0.35);
+    }
+
+    .identity h1 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .identity .role {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .identity .role strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .divider {
+      height: 1px;
+      border-radius: 999px;
+      background: linear-gradient(
+        to right,
+        rgba(255,255,255,0.06),
+        rgba(255,255,255,0.28),
+        rgba(255,255,255,0.06)
+      );
+      margin: 11px 0 13px;
+    }
+
+    .section-title {
+      font-size: 0.83rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 9px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(10,10,30,0.8);
+    }
+
+    .contact-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 0;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-value a,
+    .contact-value span {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 4px;
+    }
+
+    .btn {
+      flex: 1 1 120px;
+      border-radius: var(--radius-pill);
+      border: none;
+      outline: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 26px rgba(0,0,0,0.45);
+      background: #00aebc;
+    }
+
+    .btn-accent-light {
+      background: rgba(71, 147, 233, 0.15);
+      border: 4px solid rgba(255, 179, 71, 0.35);
+      color: #ffcb85;
+      font-weight: 600;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.20);
+    }
+
+    .btn-accent-light:hover {
+      background: rgba(3, 28, 63, 0.25);
+      border-color: rgba(255, 179, 71, 0.6);
+      color: #ffd9a6;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+    }
+
+    .btn i {
+      font-size: 0.95rem;
+    }
+
+    .social-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .social-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.35);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
+    }
+
+    .social-icon:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      background: rgba(255,179,71,0.08);
+      color: var(--accent);
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: right;
+      opacity: 0.8;
+    }
+
+    /* ===========================================
+       ESTILOS ORCIVIEW Plus - Widget integrado
+       =========================================== */
+    .orciview-widget {
+      margin-top: 10px;
+    }
+
+    .orciview-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 8px 0;
+      transition: opacity 0.2s;
+    }
+
+    .orciview-header:hover {
+      opacity: 0.85;
+    }
+
+    .orciview-header h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin: 0;
+    }
+
+    .orciview-header h3 i {
+      color: var(--accent-orcid);
+    }
+
+    .orciview-badge {
+      background: rgba(166, 206, 57, 0.2);
+      color: var(--accent-orcid);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .orciview-toggle {
+      background: none;
+      border: none;
+      color: var(--accent-orcid);
+      cursor: pointer;
+      padding: 8px;
+      font-size: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .orciview-toggle.expanded {
+      transform: rotate(180deg);
+    }
+
+    .orciview-content {
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .orciview-content.expanded {
+      max-height: 3000px;
+      opacity: 1;
+    }
+
+    .orciview-stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .orciview-stat {
+      text-align: center;
+      padding: 6px 4px;
+    }
+
+    .orciview-stat-num {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-orcid);
+    }
+
+    .orciview-stat-label {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .orciview-tabs {
+      display: flex;
+      gap: 4px;
+      padding: 8px 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .orciview-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .orciview-tab {
+      flex-shrink: 0;
+      padding: 6px 10px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: inherit;
+    }
+
+    .orciview-tab:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--text-main);
+    }
+
+    .orciview-tab.active {
+      background: var(--accent-orcid);
+      border-color: var(--accent-orcid);
+      color: #1a1a2e;
+    }
+
+    .orciview-tab .count {
+      font-weight: 600;
+    }
+
+    /* Filtros */
+    .orciview-filters {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .orciview-filters-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .orciview-filters-title {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .orciview-filters-title i {
+      color: var(--accent-orcid);
+    }
+
+    .orciview-filters-clear {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .orciview-filters-clear:hover {
+      color: var(--accent-orcid);
+      background: rgba(166, 206, 57, 0.1);
+    }
+
+    .orciview-filters-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .orciview-filter-chip {
+      padding: 4px 8px;
+      font-size: 0.68rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .orciview-filter-chip:hover {
+      border-color: var(--accent-orcid);
+      color: var(--text-main);
+    }
+
+    .orciview-filter-chip.active {
+      background: var(--accent-orcid);
+      border-color: var(--accent-orcid);
+      color: #1a1a2e;
+    }
+
+    .orciview-filter-chip .chip-count {
+      opacity: 0.7;
+      font-weight: 600;
+    }
+
+    .orciview-results-info {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      display: none;
+    }
+
+    .orciview-results-info.visible {
+      display: block;
+    }
+
+    .orciview-results-info strong {
+      color: var(--accent-orcid);
+    }
+
+    .orciview-panel {
+      display: none;
+    }
+
+    .orciview-panel.active {
+      display: block;
+    }
+
+    .orciview-scroll {
+      max-height: 320px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .orciview-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .orciview-scroll::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+    }
+
+    .orciview-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 2px;
+    }
+
+    .orciview-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-orcid);
+    }
+
+    .orciview-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .orciview-item {
+      padding: 10px;
+      border-radius: 12px;
+      background: rgba(10,10,30,0.8);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 8px;
+      border-left: 3px solid var(--accent-orcid);
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .orciview-item:hover {
+      transform: translateX(3px);
+      border-left-color: #c4e066;
+    }
+
+    .orciview-item.hidden {
+      display: none;
+    }
+
+    .orciview-item.education { border-left-color: #4ECDC4; }
+    .orciview-item.employment { border-left-color: #FF6B6B; }
+    .orciview-item.funding { border-left-color: #F39C12; }
+    .orciview-item.activities { border-left-color: #9B59B6; }
+
+    .orciview-item-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+
+    .orciview-item-title a {
+      color: #f7ef7a;
+      text-decoration: none;
+    }
+
+    .orciview-item-title a:hover {
+      color: #ffb347;
+    }
+
+    .orciview-item-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin: 0 0 6px;
+    }
+
+    .orciview-item-meta {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .orciview-item-meta span {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .orciview-item-meta i {
+      font-size: 0.6rem;
+      color: rgba(166, 206, 57, 0.7);
+    }
+
+    .orciview-type-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 8px;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .orciview-empty {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .orciview-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      background: rgba(166, 206, 57, 0.1);
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+    }
+
+    .orciview-link a {
+      color: var(--accent-orcid);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .orciview-link a:hover {
+      text-decoration: underline;
+    }
+
+    .orciview-loading {
+      text-align: center;
+      padding: 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .orciview-spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(255,255,255,0.1);
+      border-top-color: var(--accent-orcid);
+      border-radius: 50%;
+      animation: orciview-spin 0.8s linear infinite;
+      margin: 0 auto 8px;
+    }
+
+    @keyframes orciview-spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        padding: 20px 16px 16px;
+      }
+
+      .header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 20px;
+      }
+
+      .identity h1 {
+        font-size: 1.2rem;
+      }
+
+      .social-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .orciview-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="card-inner">
+      <div class="badge-nfc">
+        <i class="fa-solid fa-wave-square"></i>
+        Tarjeta de contacto Ayose Lomba (NFC)
+      </div>
+
+      <section class="header">
+        <div class="avatar" style="background:none; padding:0;">
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQFU3H5DXymEGQ/profile-displayphoto-scale_400_400/B4DZmeSCA.IEAg-/0/1759297152436?e=1764806400&v=beta&t=GflM3VeLSnXyLD_GPbhEMIft8dpoM7wxXmHDy4jGIwo" alt="Foto de Ayose Lomba Pérez" style="width:100%;height:100%;border-radius:24px;object-fit:cover;">
+        </div>
+        <div class="identity">
+          <h1>Ayose Lomba Pérez</h1>
+          <p class="role">
+            <strong>Director</strong> de la Escuela de Ingeniería en Sistemas de Información<br/>
+            <strong>Director</strong> del Grado en Creación Digital, Animación y Desarrollo de Videojuegos<br/>
+            <strong>Universidad del Atlántico Medio</strong>
+          </p>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section aria-label="Contacto">
+        <h2 class="section-title">Datos de contacto</h2>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <span class="contact-label">Teléfono</span>
+              <div class="contact-value">
+                <a href="tel:+34666831435">+34 666 831 435</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <span class="contact-label">Mail institucional</span>
+              <div class="contact-value">
+                <a href="mailto:ayose.lomba@pdi.atlanticomedio.es">
+                  ayose.lomba@pdi.atlanticomedio.es
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <span class="contact-label">Mail personal</span>
+              <div class="contact-value">
+                <a href="mailto:ayoselomba@gmail.com">
+                  ayoselomba@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="contact-text">
+              <span class="contact-label">Web</span>
+              <div class="contact-value">
+                <a href="https://ayoselomba.es" target="_blank" rel="noopener noreferrer">
+                  https://ayoselomba.es
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary"
+             href="ayose_lomba.vcf"
+             download="Ayose_Lomba_Contacto.vcf">
+            <i class="fa-solid fa-address-card"></i>
+            Guardar contacto móvil
+          </a>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <section aria-label="Redes sociales">
+        <h2 class="section-title">Redes y perfiles</h2>
+
+        <div class="social-row">
+          <span class="social-label">Conéctate conmigo</span>
+          <div class="social-icons">
+            <a class="social-icon" href="https://www.linkedin.com/in/ayoselomba" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a class="social-icon" href="https://orcid.org/0000-0002-2678-6158" target="_blank" rel="noopener noreferrer" aria-label="ORCID">
+              <i class="fa-brands fa-orcid"></i>
+            </a>
+            <a class="social-icon" href="https://github.com/alomba" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- Sección de Investigación con ORCIVIEW Plus -->
+      <section aria-label="Investigación" id="research">
+        <h2 class="section-title">Investigación</h2>
+        <div class="orciview-widget" id="orciview-nfc"></div>
+      </section>
+
+      <p class="footer-note">
+        Guarda esta página en tus marcadores para tener mi contacto al instante.
+      </p>
+    </div>
+  </main>
+
+  <!-- Script ORCIVIEW Plus integrado con filtros -->
+  <script>
+  (function() {
+    'use strict';
+
+    const CONFIG = {
+      orcidId: '0000-0002-2678-6158',
+      containerId: 'orciview-nfc',
+      collapsedByDefault: true,
+      enableFilters: true
+    };
+
+    let orcidData = null;
+    let isExpanded = false;
+    let activeFilters = { works: [], funding: [], activities: [] };
+
+    // Traducciones
+    const workTypes = {
+      'journal-article': 'Artículo',
+      'book': 'Libro',
+      'book-chapter': 'Capítulo',
+      'conference-paper': 'Ponencia',
+      'dataset': 'Dataset',
+      'dissertation': 'Tesis doctoral',
+      'preprint': 'Preprint',
+      'report': 'Informe',
+      'software': 'Software',
+      'thesis': 'Tesis',
+      'other': 'Otro'
+    };
+
+    const activityTypes = {
+      'distinction': 'Distinción',
+      'invited-position': 'Posición invitada',
+      'membership': 'Membresía',
+      'qualification': 'Cualificación',
+      'service': 'Servicio'
+    };
+
+    // Utilidades
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text || '';
+      return div.innerHTML;
+    }
+
+    function formatDate(dateObj) {
+      if (!dateObj?.year?.value) return '';
+      const y = dateObj.year.value;
+      const m = dateObj.month?.value;
+      return m ? `${m.padStart(2, '0')}/${y}` : y;
+    }
+
+    function formatDateRange(start, end) {
+      const s = formatDate(start);
+      const e = formatDate(end) || 'Presente';
+      return s ? `${s} – ${e}` : '';
+    }
+
+    // Convierte fecha ORCID a timestamp para ordenación
+    function dateToTimestamp(dateObj) {
+      if (!dateObj) return Date.now();
+      const year = parseInt(dateObj.year?.value) || 0;
+      const month = parseInt(dateObj.month?.value) || 1;
+      const day = parseInt(dateObj.day?.value) || 1;
+      return new Date(year, month - 1, day).getTime();
+    }
+
+    // Ordena por fecha descendente (más reciente primero)
+    function sortByDateDesc(items, startKey = 'start-date', endKey = 'end-date') {
+      return items.sort((a, b) => {
+        const dateA = a[startKey] || a[endKey];
+        const dateB = b[startKey] || b[endKey];
+        return dateToTimestamp(dateB) - dateToTimestamp(dateA);
+      });
+    }
+
+    function formatWorkType(type) {
+      return workTypes[type] || type?.replace(/-/g, ' ') || 'Otro';
+    }
+
+    // Obtener tipos únicos
+    function getWorkTypes() {
+      const groups = orcidData?.works?.group || [];
+      const counts = {};
+      groups.forEach(g => {
+        const type = g['work-summary'][0]?.type || 'other';
+        counts[type] = (counts[type] || 0) + 1;
+      });
+      return counts;
+    }
+
+    function getActivityTypes() {
+      const counts = {};
+      [
+        { key: 'distinctions', type: 'distinction' },
+        { key: 'invitedPositions', type: 'invited-position' },
+        { key: 'memberships', type: 'membership' },
+        { key: 'qualifications', type: 'qualification' },
+        { key: 'services', type: 'service' }
+      ].forEach(({ key, type }) => {
+        const count = orcidData?.activities[key]?.['affiliation-group']?.length || 0;
+        if (count > 0) counts[type] = count;
+      });
+      return counts;
+    }
+
+    // Renderizado
+    function render(container) {
+      const worksCount = orcidData.works?.group?.length || 0;
+      const eduCount = orcidData.educations?.['affiliation-group']?.length || 0;
+      const empCount = orcidData.employments?.['affiliation-group']?.length || 0;
+      const fundCount = orcidData.fundings?.group?.length || 0;
+      const actCount = ['distinctions', 'invitedPositions', 'memberships', 'qualifications', 'services']
+        .reduce((sum, key) => sum + (orcidData.activities[key]?.['affiliation-group']?.length || 0), 0);
+
+      const totalCount = worksCount + eduCount + empCount + fundCount + actCount;
+
+      container.innerHTML = `
+        <div class="orciview-header" role="button" tabindex="0" aria-expanded="false">
+          <h3>
+            <i class="fab fa-orcid"></i>
+            Producción científica
+            <span class="orciview-badge">${totalCount} items</span>
+          </h3>
+          <button class="orciview-toggle" aria-label="Expandir">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+        
+        <div class="orciview-content">
+          <div class="orciview-stats">
+            <div class="orciview-stat">
+              <div class="orciview-stat-num">${worksCount}</div>
+              <div class="orciview-stat-label">Publicaciones</div>
+            </div>
+            <div class="orciview-stat">
+              <div class="orciview-stat-num">${eduCount}</div>
+              <div class="orciview-stat-label">Educación</div>
+            </div>
+            <div class="orciview-stat">
+              <div class="orciview-stat-num">${empCount}</div>
+              <div class="orciview-stat-label">Empleo</div>
+            </div>
+            <div class="orciview-stat">
+              <div class="orciview-stat-num">${fundCount}</div>
+              <div class="orciview-stat-label">Proyectos</div>
+            </div>
+            <div class="orciview-stat">
+              <div class="orciview-stat-num">${actCount}</div>
+              <div class="orciview-stat-label">Actividades</div>
+            </div>
+          </div>
+          
+          <div class="orciview-tabs">
+            <button class="orciview-tab active" data-panel="works">
+              <i class="fas fa-book"></i>
+              <span class="count">${worksCount}</span>
+            </button>
+            <button class="orciview-tab" data-panel="education">
+              <i class="fas fa-graduation-cap"></i>
+              <span class="count">${eduCount}</span>
+            </button>
+            <button class="orciview-tab" data-panel="employment">
+              <i class="fas fa-briefcase"></i>
+              <span class="count">${empCount}</span>
+            </button>
+            <button class="orciview-tab" data-panel="funding">
+              <i class="fas fa-coins"></i>
+              <span class="count">${fundCount}</span>
+            </button>
+            <button class="orciview-tab" data-panel="activities">
+              <i class="fas fa-award"></i>
+              <span class="count">${actCount}</span>
+            </button>
+          </div>
+          
+          <div class="orciview-panel active" data-panel="works">
+            ${renderFilters('works', getWorkTypes(), formatWorkType)}
+            <div class="orciview-results-info" id="results-works"></div>
+            ${renderWorks()}
+          </div>
+          <div class="orciview-panel" data-panel="education">${renderEducation()}</div>
+          <div class="orciview-panel" data-panel="employment">${renderEmployment()}</div>
+          <div class="orciview-panel" data-panel="funding">${renderFunding()}</div>
+          <div class="orciview-panel" data-panel="activities">
+            ${renderFilters('activities', getActivityTypes(), t => activityTypes[t] || t)}
+            <div class="orciview-results-info" id="results-activities"></div>
+            ${renderActivities()}
+          </div>
+          
+          <div class="orciview-link">
+            <i class="fab fa-orcid"></i>
+            <a href="https://orcid.org/${CONFIG.orcidId}" target="_blank" rel="noopener">
+              Ver perfil completo en ORCID
+            </a>
+          </div>
+        </div>
+      `;
+
+      // Event listeners
+      const header = container.querySelector('.orciview-header');
+      const content = container.querySelector('.orciview-content');
+      const toggle = container.querySelector('.orciview-toggle');
+
+      function toggleContent() {
+        isExpanded = !isExpanded;
+        content.classList.toggle('expanded', isExpanded);
+        toggle.classList.toggle('expanded', isExpanded);
+        header.setAttribute('aria-expanded', isExpanded);
+      }
+
+      header.addEventListener('click', toggleContent);
+      header.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleContent();
+        }
+      });
+
+      // Tabs
+      container.querySelectorAll('.orciview-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          container.querySelectorAll('.orciview-tab').forEach(t => t.classList.remove('active'));
+          container.querySelectorAll('.orciview-panel').forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          container.querySelector(`.orciview-panel[data-panel="${tab.dataset.panel}"]`).classList.add('active');
+        });
+      });
+
+      // Filtros
+      container.querySelectorAll('.orciview-filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const section = chip.dataset.section;
+          const type = chip.dataset.type;
+          const idx = activeFilters[section].indexOf(type);
+          if (idx > -1) {
+            activeFilters[section].splice(idx, 1);
+          } else {
+            activeFilters[section].push(type);
+          }
+          chip.classList.toggle('active');
+          applyFilters(container, section);
+        });
+      });
+
+      container.querySelectorAll('.orciview-filters-clear').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const section = btn.dataset.section;
+          activeFilters[section] = [];
+          container.querySelectorAll(`.orciview-filter-chip[data-section="${section}"]`).forEach(c => c.classList.remove('active'));
+          applyFilters(container, section);
+        });
+      });
+    }
+
+    function renderFilters(section, types, formatFn) {
+      const entries = Object.entries(types);
+      if (entries.length <= 1) return '';
+      
+      return `
+        <div class="orciview-filters">
+          <div class="orciview-filters-header">
+            <span class="orciview-filters-title"><i class="fas fa-filter"></i> Filtrar por tipo</span>
+            <button class="orciview-filters-clear" data-section="${section}">Limpiar</button>
+          </div>
+          <div class="orciview-filters-list">
+            ${entries.map(([type, count]) => `
+              <button class="orciview-filter-chip" data-type="${type}" data-section="${section}">
+                ${formatFn(type)} <span class="chip-count">(${count})</span>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function applyFilters(container, section) {
+      const items = container.querySelectorAll(`.orciview-panel[data-panel="${section}"] .orciview-item`);
+      let visible = 0, total = items.length;
+      
+      items.forEach(item => {
+        const shouldShow = activeFilters[section].length === 0 || activeFilters[section].includes(item.dataset.type);
+        item.classList.toggle('hidden', !shouldShow);
+        if (shouldShow) visible++;
+      });
+
+      const info = container.querySelector(`#results-${section}`);
+      if (info) {
+        if (activeFilters[section].length > 0) {
+          info.classList.add('visible');
+          info.innerHTML = `Mostrando <strong>${visible}</strong> de ${total} resultados`;
+        } else {
+          info.classList.remove('visible');
+        }
+      }
+    }
+
+    function renderWorks() {
+      const groups = orcidData.works?.group || [];
+      if (!groups.length) return '<div class="orciview-empty">Sin publicaciones</div>';
+
+      let html = '<div class="orciview-scroll"><ul class="orciview-list">';
+      groups.forEach(group => {
+        const w = group['work-summary'][0];
+        const title = w.title?.title?.value || '';
+        const type = w.type || 'other';
+        const year = w['publication-date']?.year?.value || '';
+        const journal = w['journal-title']?.value || '';
+        const doi = (w['external-ids']?.['external-id'] || []).find(id => id['external-id-type'] === 'doi');
+        const url = doi ? `https://doi.org/${doi['external-id-value']}` : w.url?.value;
+
+        html += `
+          <li class="orciview-item" data-type="${type}">
+            <h4 class="orciview-item-title">
+              ${url ? `<a href="${url}" target="_blank" rel="noopener">${escapeHtml(title)}</a>` : escapeHtml(title)}
+            </h4>
+            ${journal ? `<p class="orciview-item-subtitle">${escapeHtml(journal)}</p>` : ''}
+            <div class="orciview-item-meta">
+              ${year ? `<span><i class="fas fa-calendar"></i> ${year}</span>` : ''}
+              <span class="orciview-type-badge">${formatWorkType(type)}</span>
+            </div>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+      return html;
+    }
+
+    function renderEducation() {
+      const groups = orcidData.educations?.['affiliation-group'] || [];
+      if (!groups.length) return '<div class="orciview-empty">Sin formación registrada</div>';
+
+      // Extraer y ordenar por fecha
+      const eduItems = groups.map(g => g.summaries[0]['education-summary']);
+      sortByDateDesc(eduItems);
+
+      let html = '<div class="orciview-scroll"><ul class="orciview-list">';
+      eduItems.forEach(e => {
+        html += `
+          <li class="orciview-item education">
+            <h4 class="orciview-item-title">${escapeHtml(e['role-title'] || 'Titulación')}</h4>
+            <p class="orciview-item-subtitle">${escapeHtml(e.organization?.name || '')}</p>
+            <div class="orciview-item-meta">
+              <span><i class="fas fa-calendar"></i> ${formatDateRange(e['start-date'], e['end-date'])}</span>
+            </div>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+      return html;
+    }
+
+    function renderEmployment() {
+      const groups = orcidData.employments?.['affiliation-group'] || [];
+      if (!groups.length) return '<div class="orciview-empty">Sin empleos registrados</div>';
+
+      // Extraer y ordenar por fecha
+      const empItems = groups.map(g => g.summaries[0]['employment-summary']);
+      sortByDateDesc(empItems);
+
+      let html = '<div class="orciview-scroll"><ul class="orciview-list">';
+      empItems.forEach(e => {
+        html += `
+          <li class="orciview-item employment">
+            <h4 class="orciview-item-title">${escapeHtml(e['role-title'] || 'Puesto')}</h4>
+            <p class="orciview-item-subtitle">${escapeHtml(e.organization?.name || '')}</p>
+            <div class="orciview-item-meta">
+              <span><i class="fas fa-calendar"></i> ${formatDateRange(e['start-date'], e['end-date'])}</span>
+            </div>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+      return html;
+    }
+
+    function renderFunding() {
+      const groups = orcidData.fundings?.group || [];
+      if (!groups.length) return '<div class="orciview-empty">Sin proyectos registrados</div>';
+
+      // Extraer y ordenar por fecha
+      const fundItems = groups.map(g => g['funding-summary'][0]);
+      sortByDateDesc(fundItems);
+
+      let html = '<div class="orciview-scroll"><ul class="orciview-list">';
+      fundItems.forEach(f => {
+        html += `
+          <li class="orciview-item funding">
+            <h4 class="orciview-item-title">${escapeHtml(f.title?.title?.value || '')}</h4>
+            <p class="orciview-item-subtitle">${escapeHtml(f.organization?.name || '')}</p>
+            <div class="orciview-item-meta">
+              <span><i class="fas fa-calendar"></i> ${formatDateRange(f['start-date'], f['end-date'])}</span>
+            </div>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+      return html;
+    }
+
+    function renderActivities() {
+      const types = [
+        { key: 'distinctions', type: 'distinction' },
+        { key: 'invitedPositions', type: 'invited-position' },
+        { key: 'memberships', type: 'membership' },
+        { key: 'qualifications', type: 'qualification' },
+        { key: 'services', type: 'service' }
+      ];
+
+      let items = [];
+      types.forEach(({ key, type }) => {
+        (orcidData.activities[key]?.['affiliation-group'] || []).forEach(group => {
+          const a = group.summaries[0][`${type}-summary`];
+          items.push({ ...a, actType: type });
+        });
+      });
+
+      if (!items.length) return '<div class="orciview-empty">Sin actividades registradas</div>';
+
+      // Ordenar todas las actividades por fecha (más reciente primero)
+      sortByDateDesc(items);
+
+      let html = '<div class="orciview-scroll"><ul class="orciview-list">';
+      items.forEach(a => {
+        html += `
+          <li class="orciview-item activities" data-type="${a.actType}">
+            <h4 class="orciview-item-title">${escapeHtml(a['role-title'] || activityTypes[a.actType])}</h4>
+            <p class="orciview-item-subtitle">${escapeHtml(a.organization?.name || '')}</p>
+            <div class="orciview-item-meta">
+              <span class="orciview-type-badge">${activityTypes[a.actType]}</span>
+              <span><i class="fas fa-calendar"></i> ${formatDateRange(a['start-date'], a['end-date'])}</span>
+            </div>
+          </li>
+        `;
+      });
+      html += '</ul></div>';
+      return html;
+    }
+
+    // Carga de datos
+    async function fetchData() {
+      const base = `https://pub.orcid.org/v3.0/${CONFIG.orcidId}`;
+      const h = { 'Accept': 'application/json' };
+
+      const [record, works, educations, employments, fundings, distinctions, invitedPositions, memberships, qualifications, services] = await Promise.all([
+        fetch(`${base}/record`, { headers: h }).then(r => r.json()),
+        fetch(`${base}/works`, { headers: h }).then(r => r.json()),
+        fetch(`${base}/educations`, { headers: h }).then(r => r.json()),
+        fetch(`${base}/employments`, { headers: h }).then(r => r.json()),
+        fetch(`${base}/fundings`, { headers: h }).then(r => r.json()),
+        fetch(`${base}/distinctions`, { headers: h }).then(r => r.json()).catch(() => ({ 'affiliation-group': [] })),
+        fetch(`${base}/invited-positions`, { headers: h }).then(r => r.json()).catch(() => ({ 'affiliation-group': [] })),
+        fetch(`${base}/memberships`, { headers: h }).then(r => r.json()).catch(() => ({ 'affiliation-group': [] })),
+        fetch(`${base}/qualifications`, { headers: h }).then(r => r.json()).catch(() => ({ 'affiliation-group': [] })),
+        fetch(`${base}/services`, { headers: h }).then(r => r.json()).catch(() => ({ 'affiliation-group': [] }))
+      ]);
+
+      orcidData = {
+        record, works, educations, employments, fundings,
+        activities: { distinctions, invitedPositions, memberships, qualifications, services }
+      };
+    }
+
+    // Inicialización
+    async function init() {
+      const container = document.getElementById(CONFIG.containerId);
+      if (!container) return;
+
+      container.innerHTML = `
+        <div class="orciview-loading">
+          <div class="orciview-spinner"></div>
+          <p>Cargando producción científica...</p>
+        </div>
+      `;
+
+      try {
+        await fetchData();
+        render(container);
+      } catch (err) {
+        console.error('ORCIVIEW Error:', err);
+        container.innerHTML = `
+          <div class="orciview-link">
+            <i class="fab fa-orcid"></i>
+            <a href="https://orcid.org/${CONFIG.orcidId}" target="_blank" rel="noopener">
+              Ver producción científica en ORCID
+            </a>
+          </div>
+        `;
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+</body>
+</html>

@@ -1,78 +1,224 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Investigación - ORCID Widget</title>
-  <!-- Bootstrap core CSS -->
-  <link href="https://ayoselomba.es/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-  <!-- Font Awesome Free 5 -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <!-- Custom template CSS -->
-  <link href="https://ayoselomba.es/css/agency.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORCIVIEW Plus v2.0 - Visualizador Completo de Perfil ORCID</title>
+    <meta name="description" content="Visualiza tu perfil ORCID completo: producción científica, educación, empleo y actividades profesionales con filtros por tipo">
+    <meta name="author" content="Ayose Lomba Pérez">
+    <meta name="keywords" content="ORCID, producción científica, investigación, publicaciones, widget">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="ORCIVIEW Plus - Visualizador ORCID">
+    <meta property="og:description" content="Visualiza tu perfil ORCID completo con filtros por tipo de publicación">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ayoselomba.es/orcid">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://orcid.org/sites/default/files/images/orcid_16x16.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- ORCIVIEW Plus CSS -->
+    <link rel="stylesheet" href="https://ayoselomba.es/orcid/css/orciview-plus.css">
 </head>
-<body id="page-top">
+<body>
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-  <!-- Sección Investigación -->
-  <section class="bg-light page-section" id="research">
-    <div class="container">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">INVESTIGACIÓN</h2>
-      </div>
-      <p>Listado de producción científica …</p> 
+    <!-- Header -->
+    <header class="orciview-header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fab fa-orcid" aria-hidden="true"></i>
+                </div>
+                <h1>ORCIVIEW <span>Plus</span> <span class="logo-version">v2.0</span></h1>
+            </div>
 
-      <!-- Input + botón para ORCID -->
-      <div class="form-row justify-content-center mb-3">
-        <div class="col-auto">
-          <input type="text"
-                 id="orcid-input"
-                 class="form-control"
-                 value="0000-0002-2678-6158"
-                 placeholder="Introduce tu ORCID">
+            <div class="search-section">
+                <div class="input-group">
+                    <label for="orcid-input">ORCID iD</label>
+                    <div class="input-wrapper">
+                        <i class="fab fa-orcid" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="orcid-input" 
+                            placeholder="0000-0002-2678-6158"
+                            aria-describedby="orcid-help"
+                            pattern="\d{4}-\d{4}-\d{4}-\d{4}"
+                        >
+                    </div>
+                    <span id="orcid-help" class="visually-hidden">Introduce tu identificador ORCID en formato XXXX-XXXX-XXXX-XXXX</span>
+                </div>
+
+                <div class="btn-group">
+                    <button id="btn-search" class="btn btn-primary" type="button">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                        Cargar perfil
+                    </button>
+                    <button id="btn-export" class="btn btn-secondary" type="button" disabled>
+                        <i class="fas fa-file-excel" aria-hidden="true"></i>
+                        Exportar Excel
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="col-auto">
-          <button id="btnResearchOrcid"
-                  class="btn btn-primary"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#researchOrcidCollapse"
-                  aria-expanded="false"
-                  aria-controls="researchOrcidCollapse">
-            Buscar producción científica en ORCID
-          </button>
-        </div>
-      </div>
-      <p class="mt-3">Resultados obtenidos: <strong id="research-works-counter">0</strong></p>
+    </header>
 
-      <!-- Collapse con la lista -->
-      <div class="collapse" id="researchOrcidCollapse">
-        <div class="card card-body">
-          <ul id="research-works-list" class="list-unstyled mb-0">
-            <li class="text-center text-muted">Cargando obras…</li>
-          </ul>
+    <!-- Main Content -->
+    <main id="main-content" class="orciview-main">
+        <!-- Loading State -->
+        <div class="loading" id="loading" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Cargando datos de ORCID...</p>
         </div>
-      </div>
-      <div class="text-center mt-3">       
-       <button id="btnExportExcel" class="btn btn-success mt-3" disabled>Exportar a Excel</button> 
-      </div>
-    </div>
-  </section>
 
-  <!-- jQuery y Bootstrap JS -->
-  <script src="https://ayoselomba.es/vendor/jquery/jquery.min.js"></script>
-  <script src="https://ayoselomba.es/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ORCID Widget JS externo -->
-  <script src="http://ayoselomba.es/js/orcid-widgetxml.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <!-- Inicializar el widget después de cargar orcid-widget.js -->
-  <script>
-    ORCIDWidget.init({
-      orcidId:         document.getElementById('orcid-input').value.trim(),
-      buttonSelector:  '#btnResearchOrcid',
-      collapseSelector:'#researchOrcidCollapse',
-      listSelector:    '#research-works-list'
-    });
-  </script>
+        <!-- Error Message -->
+        <div class="error-message" id="error-message" role="alert">
+            <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+            <div>
+                <strong>Error al cargar los datos</strong>
+                <p id="error-text">No se pudo conectar con la API de ORCID.</p>
+            </div>
+        </div>
+
+        <!-- Profile Card -->
+        <section class="profile-card" id="profile-card" aria-labelledby="profile-name">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-avatar" aria-hidden="true">A</div>
+                <div class="profile-info">
+                    <h2 class="profile-name" id="profile-name">Nombre del investigador</h2>
+                    <div class="profile-orcid">
+                        <i class="fab fa-orcid" aria-hidden="true"></i>
+                        <a href="#" id="profile-orcid-link" target="_blank" rel="noopener">0000-0000-0000-0000</a>
+                    </div>
+                    <p class="profile-bio" id="profile-bio"></p>
+                </div>
+            </div>
+
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-works">0</div>
+                    <div class="stat-label">Publicaciones</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-education">0</div>
+                    <div class="stat-label">Educación</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-employment">0</div>
+                    <div class="stat-label">Empleos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-funding">0</div>
+                    <div class="stat-label">Financiación</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat-activities">0</div>
+                    <div class="stat-label">Actividades</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results-section" style="display: none;" aria-label="Resultados del perfil ORCID">
+            <!-- Tabs Navigation -->
+            <nav class="tabs-nav" role="tablist" aria-label="Secciones del perfil">
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-works" id="btn-tab-works" data-tab="works">
+                    <i class="fas fa-book" aria-hidden="true"></i>
+                    <span>Publicaciones</span>
+                    <span class="badge" id="badge-works">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-education" id="btn-tab-education" data-tab="education">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                    <span>Educación</span>
+                    <span class="badge" id="badge-education">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-employment" id="btn-tab-employment" data-tab="employment">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i>
+                    <span>Empleo</span>
+                    <span class="badge" id="badge-employment">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-funding" id="btn-tab-funding" data-tab="funding">
+                    <i class="fas fa-coins" aria-hidden="true"></i>
+                    <span>Financiación</span>
+                    <span class="badge" id="badge-funding">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-activities" id="btn-tab-activities" data-tab="activities">
+                    <i class="fas fa-award" aria-hidden="true"></i>
+                    <span>Actividades</span>
+                    <span class="badge" id="badge-activities">0</span>
+                </button>
+            </nav>
+
+            <!-- Tab Contents -->
+            
+            <!-- Works Tab -->
+            <div class="tab-content active" role="tabpanel" id="tab-works" aria-labelledby="btn-tab-works">
+                <div class="filters-container" id="filters-works"></div>
+                <div class="results-info" id="results-info-works" style="display: none;"></div>
+                <ul class="section-list" id="works-list"></ul>
+            </div>
+
+            <!-- Education Tab -->
+            <div class="tab-content" role="tabpanel" id="tab-education" aria-labelledby="btn-tab-education">
+                <div class="filters-container" id="filters-education" style="display: none;"></div>
+                <div class="results-info" id="results-info-education" style="display: none;"></div>
+                <ul class="section-list" id="education-list"></ul>
+            </div>
+
+            <!-- Employment Tab -->
+            <div class="tab-content" role="tabpanel" id="tab-employment" aria-labelledby="btn-tab-employment">
+                <div class="filters-container" id="filters-employment" style="display: none;"></div>
+                <div class="results-info" id="results-info-employment" style="display: none;"></div>
+                <ul class="section-list" id="employment-list"></ul>
+            </div>
+
+            <!-- Funding Tab -->
+            <div class="tab-content" role="tabpanel" id="tab-funding" aria-labelledby="btn-tab-funding">
+                <div class="filters-container" id="filters-funding"></div>
+                <div class="results-info" id="results-info-funding" style="display: none;"></div>
+                <ul class="section-list" id="funding-list"></ul>
+            </div>
+
+            <!-- Activities Tab -->
+            <div class="tab-content" role="tabpanel" id="tab-activities" aria-labelledby="btn-tab-activities">
+                <div class="filters-container" id="filters-activities"></div>
+                <div class="results-info" id="results-info-activities" style="display: none;"></div>
+                <ul class="section-list" id="activities-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="orciview-footer">
+        <p>
+            <strong>ORCIVIEW Plus v2.0</strong> - Visualizador de perfil ORCID con filtros
+        </p>
+        <div class="footer-links">
+            <a href="https://github.com/alomba/ORCIVIEW" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://orcid.org" target="_blank" rel="noopener">
+                <i class="fab fa-orcid"></i> ORCID
+            </a>
+            <a href="https://ayoselomba.es" target="_blank" rel="noopener">
+                <i class="fas fa-globe"></i> ayoselomba.es
+            </a>
+        </div>
+        <p style="margin-top: 1rem;">© 2025 Ayose Lomba Pérez - Licencia MIT</p>
+    </footer>
+
+    <!-- SheetJS para exportación a Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <!-- ORCIVIEW Plus JavaScript -->
+    <script src="https://ayoselomba.es/orcid/js/orciview-plus.js"></script>
 </body>
 </html>
